@@ -1,0 +1,156 @@
+clc; clear;
+Z=[2;1];P=[0;-3-%i;-3+%i];K=2.5;
+disp(Z,'Enter the zeros Z = ') 
+disp(P,'Enter the poles P = ')
+disp(K,'Enter the system gain K = ')
+S=zp2tf(Z,P,K,"c")
+roots(S.num)
+disp(S, 'The obtained transfer function S =')
+
+clc
+clear
+H=syslin("d",[45.76+6*%s+2*%s^2],[23.28+3.1*%s+%s^2+3.796*%s^3])
+disp(H, 'The given transfer function H =' )
+[z,p,k]=tf2zp(H)
+disp(z, 'The obtained zeros for the given transfer function z = ');
+disp(p, 'The obtained poles for the given transfer function p = ');
+disp(k, 'The obtained system gain for the given transfer function k = ');
+
+clc
+clear
+s=%s;
+n=[2+3*s+4*s^2]; 
+d=[1+s+s^2];
+h=syslin("c",n,d);
+plzr(h);
+
+OUTPUT:-
+ 1.
+--> clc; clear;
+
+--> Z=[2;1];P=[0;-3-%i;-3+%i];K=2.5;
+
+--> disp(Z,'Enter the zeros Z = ') 
+
+ Enter the zeros Z = 
+
+
+   2.
+   1.
+
+
+--> disp(P,'Enter the poles P = ')
+
+ Enter the poles P = 
+
+
+   0.  
+  -3. - i
+  -3. + i  
+
+
+--> disp(K,'Enter the system gain K = ')
+
+ Enter the system gain K = 
+
+
+   2.5
+
+
+--> S=zp2tf(Z,P,K,"c")
+ S  = 
+
+                  2  
+   5 - 7.5s + 2.5s   
+   ----------------  
+            2   3    
+    10s + 6s + s     
+
+
+--> roots(S.num)
+ ans  =
+
+   2.  
+   1.  
+
+
+--> disp(S, 'The obtained transfer function S =')
+
+ The obtained transfer function S =
+
+
+                  2  
+   5 - 7.5s + 2.5s   
+   ----------------  
+            2   3    
+    10s + 6s + s     
+2.
+ 
+--> clear
+
+--> H=syslin("d",[45.76+6*%s+2*%s^2],[23.28+3.1*%s+%s^2+3.796*%s^3])
+ H  = 
+
+                       2       
+        45.76 + 6z + 2z        
+   --------------------------  
+                   2        3  
+   23.28 + 3.1z + z + 3.796z   
+
+
+--> disp(H, 'The given transfer function H =' )
+
+ The given transfer function H =
+
+
+                       2       
+        45.76 + 6z + 2z        
+   --------------------------  
+                   2        3  
+   23.28 + 3.1z + z + 3.796z   
+
+
+--> [z,p,k]=tf2zp(H)
+ k  = 
+
+   0.5268704
+
+ p  = 
+
+  -1.7664798  
+   0.7515223 + 1.7049813i
+   0.7515223 - 1.7049813i
+
+ z  = 
+
+  -1.5 + 4.542026i
+  -1.5 - 4.542026i
+
+
+--> disp(z, 'The obtained zeros for the given transfer function z = ');
+
+ The obtained zeros for the given transfer function z = 
+
+
+  -1.5 + 4.542026i
+  -1.5 - 4.542026i
+
+
+--> disp(p, 'The obtained poles for the given transfer function p = ');
+
+ The obtained poles for the given transfer function p = 
+
+
+  -1.7664798  
+   0.7515223 + 1.7049813i
+   0.7515223 - 1.7049813i
+
+
+--> disp(k, 'The obtained system gain for the given transfer function k = ');
+
+ The obtained system gain for the given transfer function k = 
+
+
+   0.5268704
+3.
+
