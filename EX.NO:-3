@@ -1,0 +1,81 @@
+clc;
+num=poly([1],'s','coeff');
+den=poly([21],'s','coeff');
+g=syslin('c',num/den);
+disp(g,'The given first order system function G=');
+
+t=0:0.05:50;
+
+gs=csim('step',t,g);
+subplot(121)
+plot2d(t,gs)
+xlabel('Time {t}(sec)')
+ylabel('step response {c(t)}')
+title('step response of a first order system')
+
+gi=csim('impulse',t,g);
+subplot(122)
+plot2d(t,gi)
+xlabel('Time {t} (sec)')
+ylabel('Impulse response {c(t)}')
+title('Impulse Response of a First Order System')
+
+OUTPUT:-
+ 
+--> num=poly([1],'s','coeff');
+
+--> den=poly([21],'s','coeff');
+
+--> g=syslin('c',num/den);
+
+--> disp(g,'The given first order system function G=');
+
+ The given first order system function G=
+
+
+        
+   1    
+   ---  
+        
+   21   
+
+
+--> 
+
+--> t=0:0.05:50;
+
+--> 
+
+--> gs=csim('step',t,g);
+operation +: Warning adding a matrix with the empty matrix will give an empty matrix result.
+
+--> subplot(121)
+
+--> plot2d(t,gs)
+
+plot2d: Wrong size for input arguments: Incompatible sizes.
+
+--> xlabel('Time {t}(sec)')
+
+--> ylabel('step response {c(t)}')
+
+--> title('step response of a first order system')
+
+--> 
+
+--> gi=csim('impulse',t,g);
+operation +: Warning adding a matrix with the empty matrix will give an empty matrix result.
+
+--> subplot(122)
+
+--> plot2d(t,gi)
+
+plot2d: Wrong size for input arguments: Incompatible sizes.
+
+--> xlabel('Time {t} (sec)')
+
+--> ylabel('Impulse response {c(t)}')
+
+--> title('Impulse Response of a First Order System')
+
+-->
