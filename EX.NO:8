@@ -1,0 +1,64 @@
+clc;
+clear;
+k=10;
+num=poly([1],"s","coeff");
+den=poly([0 1 0.6 0.05],"s","coeff");
+s1=syslin('c',num,den);
+G=k*s1;
+disp(G, 'The given transfer function G(s)=');
+bode(G,0.01,1000);
+xtitle('Bode plot of the given transfer function G(s)');
+[g,frp]=g_margin(G);
+[p,frg]=p_margin(G)
+show_margins(G)
+disp(frg,'Gain crossover frequency=',p,'Phase margin(degrees)=');
+disp(frp,'Phase crossover frequency=',g,'Gain margin(dB)=');
+
+
+OUTPUT:-
+ 
+--> clear;
+--> k=10;
+--> num=poly([1],"s","coeff");
+--> den=poly([0 1 0.6 0.05],"s","coeff");
+--> s1=syslin('c',num,den);
+--> G=k*s1;
+--> disp(G, 'The given transfer function G(s)=');
+
+ The given transfer function G(s)=
+
+                      
+          10          
+   -----------------  
+           2       3  
+   s + 0.6s + 0.05s   
+
+--> bode(G,0.01,1000);
+--> xtitle('Bode plot of the given transfer function G(s)');
+--> [g,frp]=g_margin(G);
+--> [p,frg]=p_margin(G)
+ frg  = 
+
+   0.6489779
+ p  = 
+
+   3.9430653
+--> show_margins(G)
+--> disp(frg,'Gain crossover frequency=',p,'Phase margin(degrees)=');
+
+ Phase margin(degrees)=
+
+   3.9430653
+
+ Gain crossover frequency=
+
+   0.6489779
+--> disp(frp,'Phase crossover frequency=',g,'Gain margin(dB)=');
+
+ Gain margin(dB)=
+
+   1.5836249
+
+ Phase crossover frequency=
+
+   0.7117625
