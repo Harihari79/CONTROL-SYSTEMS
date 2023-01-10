@@ -1,0 +1,144 @@
+clear;clc;
+xdel(winsid());
+mode(0);
+
+Mp=0.2;
+tp=1;
+J=1;
+B=1;
+
+s=%s;
+pi=%pi;
+Eq=(s*pi)^2-log(1/Mp)^2*(1-s^2);
+disp(Eq, 'The obtained equation')
+
+x=roots(Eq);
+disp(x,'x=')
+
+zeta=abs(x(1));
+disp(zeta,'zeta=')
+
+wd=pi/tp;
+disp(wd,'damped frequency wd=')
+
+wn=wd/sqrt(1-zeta^2);
+disp(wn,'natural frequency wn=')
+
+K=J*wn^2;
+disp(K, 'K=')
+
+Kh=(2*sqrt(K*J)*zeta-B)/K;
+disp(Kh,'Kh=')
+
+sigma=wn*zeta;
+disp(sigma, 'sigma=')
+
+_beta=atan(wd/sigma);
+disp(_beta,'Beta =')
+
+tr=(pi-_beta)/wd;
+disp(tr,'Rise time tr=')
+
+ts_2percent=4/sigma;
+disp(ts_2percent, 'Settling time for 2% error=')
+
+ts_5percent=3/sigma;
+disp(ts_5percent, 'Settling time for 5% error=')
+OUTPUT:-
+ 
+--> xdel(winsid());
+
+--> mode(0);
+--> 
+--> Mp=0.2;
+--> tp=1;
+--> J=1;
+--> B=1;
+--> 
+--> s=%s;
+--> pi=%pi;
+--> Eq=(s*pi)^2-log(1/Mp)^2*(1-s^2);
+--> disp(Eq, 'The obtained equation')
+
+ The obtained equation
+
+                        2
+  -2.5902904 +12.459895s 
+--> 
+--> x=roots(Eq);
+--> disp(x,'x=')
+
+ x=
+
+   0.4559498  
+  -0.4559498  
+--> 
+--> zeta=abs(x(1));
+--> disp(zeta,'zeta=')
+
+ zeta=
+
+   0.4559498
+--> 
+--> wd=pi/tp;
+--> disp(wd,'damped frequency wd=')
+
+ damped frequency wd=
+
+   3.1415927
+--> 
+--> wn=wd/sqrt(1-zeta^2);
+--> disp(wn,'natural frequency wn=')
+
+ natural frequency wn=
+
+   3.5298576
+--> 
+--> K=J*wn^2;
+--> disp(K, 'K=')
+
+ K=
+
+   12.459895
+--> 
+--> Kh=(2*sqrt(K*J)*zeta-B)/K;
+--> disp(Kh,'Kh=')
+
+ Kh=
+
+   0.1780814
+--> 
+--> sigma=wn*zeta;
+--> disp(sigma, 'sigma=')
+
+ sigma=
+
+   1.6094379
+--> 
+--> _beta=atan(wd/sigma);
+--> disp(_beta,'Beta =')
+
+ Beta =
+
+   1.0973572
+--> 
+--> tr=(pi-_beta)/wd;
+--> disp(tr,'Rise time tr=')
+
+ Rise time tr=
+
+   0.6507004
+--> 
+--> ts_2percent=4/sigma;
+--> disp(ts_2percent, 'Settling time for 2% error=')
+
+ Settling time for 2% error=
+
+   2.4853397
+--> 
+--> ts_5percent=3/sigma;
+--> disp(ts_5percent, 'Settling time for 5% error=')
+
+ Settling time for 5% error=
+
+   1.8640048
