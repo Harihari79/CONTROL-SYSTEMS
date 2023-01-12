@@ -2,7 +2,7 @@ clear;
 clc;
 xdel(winsid());
 cd"C:\Users\admin\Documents"
-("root1.sce")
+exec("root1.sce")
 s=%s;
 G=syslin('c',1,s*(s+1)*(s^2+4*s+13));
 disp(G, 'The given transfer function G(s)=');
