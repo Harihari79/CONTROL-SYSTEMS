@@ -1,0 +1,18 @@
+clear;
+clc;
+xdel(winsid());
+cd"C:\Users\admin\Documents"
+("root1.sce")
+s=%s;
+G=syslin('c',1,s*(s+1)*(s^2+4*s+13));
+disp(G, 'The given transfer function G(s)=');
+root1.sce(G,[-6 -5;6 5],'Root locus plot for the given transfer function G(s)=1/s(s+1)(s^2+4s+13)');
+OUTPUT:-
+
+ The given transfer function G(s)=
+
+                        
+           1            
+   -------------------  
+            2    3   4  
+   13s + 17s + 5s + s   
