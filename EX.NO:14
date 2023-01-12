@@ -26,3 +26,99 @@ OUTPUT:-
    ------------------------------------  
                     2      3     4    5  
    108 + 356s + 187s + 114s + 29s + 2s  
+(ii) The state model reduction technique 
+a) for single input and single output (SISO) system
+clc;
+s=poly(0,'s');
+A=[0 1;-6 -5];
+B=[0;1];
+C=[8 1];
+[n1,n2]=size(A);
+I=eye(n1,n2); //Identity matrix
+X=s*I-A;
+phi=inv(X); //Inverse of Matrix
+Y=C*phi;
+Z=Y*B;
+//sys=tf2ss(Z)
+disp(Z,"The transfer function representation of system is T(S)=");
+//disp(sys)
+OUTPUT:-
+
+ The transfer function representation of system is T(S)=
+
+                
+     8 + s      
+   -----------  
+             2  
+   6 + 5s + s  
+   
+b) for multiple input and multiple output (MIMO) system
+clc;
+clear;
+close;
+
+A=[0 1;-25 -4];
+B=[1 1;0 1];
+C=[1 0;0 1];
+D=[0 0;0 0];
+
+H=syslin('c',A,B,C,D);
+
+disp(H,'The given state model matrices are');
+disp(A,'A='); 
+disp(B,'B=');
+disp(C,'C=');
+disp(D,'D=');
+
+G=clean(ss2tf(H));
+disp(G,'The obtained transfer functions are');
+
+OUTPUT:-
+ 
+ The given state model matrices are
+
+!lss  A  B  C  D  X0  dt  !
+   0.    1.
+  -25.  -4.
+   1.   1.
+   0.   1.
+   1.   0.
+   0.   1.
+   0.   0.
+   0.   0.
+   0.
+   0.
+ c
+
+ A=
+
+   0.    1.
+  -25.  -4.
+
+ B=
+
+   1.   1.
+   0.   1.
+
+ C=
+
+   1.   0.
+   0.   1.
+
+ D=
+
+   0.   0.
+   0.   0.
+
+ The obtained transfer functions are
+
+                               
+      4 + s         5 + s      
+   ------------  ------------  
+              2             2  
+   25 + 4s + s   25 + 4s + s   
+                               
+       -25         -25 + s     
+   ------------  ------------  
+              2             2  
+   25 + 4s + s   25 + 4s + s   
